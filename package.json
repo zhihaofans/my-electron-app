@@ -7,7 +7,9 @@
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0"
@@ -24,8 +26,7 @@
   "config": {
     "forge": {
       "packagerConfig": {},
-      "makers": [
-        {
+      "makers": [{
           "name": "@electron-forge/maker-squirrel",
           "config": {
             "name": "my_electron_app"
@@ -46,6 +47,15 @@
           "config": {}
         }
       ]
+    }
+  },
+  "build": {
+    "appId": "com.zhihaofans.electronapp",
+    "win": {
+      "target": [{
+        "target": "zip",
+        "arch": ["x64", "ia32"]
+      }]
     }
   }
 }
